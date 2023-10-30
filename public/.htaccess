@@ -1,0 +1,7 @@
+# On récupère tout ce qu'il y a dans l'url, si ce n'est pas un fichier ou répertoire qui existe on réécrit l'url
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule (.*) index.php?r=$1 [QSA,L]

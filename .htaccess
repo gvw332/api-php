@@ -1,0 +1,4 @@
+# réécriture d'url dans le répertoire public
+
+RewriteEngine On
+RewriteRule (.*) public/$1 [L]  
