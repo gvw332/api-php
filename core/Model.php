@@ -135,7 +135,8 @@ class Model{
             $sql = "UPDATE " . $this->table . " SET " . implode(',', $fields) . ' WHERE ' . $fields_insert[0] . '=' . $values_insert[0];
         } else {            
             $f = 'Insert';
-            $values_insert[':id'] = NULL; 
+            $d[':id'] = NULL;
+            $values_insert[] = ":id"; 
             $fields_insert[] = "id";  
             
             
@@ -144,7 +145,7 @@ class Model{
             // die;      
             $sql = 'INSERT INTO ' . $this->table . ' ( ' . implode(',', $fields_insert) . ' ) VALUES ( ' . implode(',', $values_insert) . ' )';            
         }
-        
+
         try {
            
             $stmt = $this->bdd->prepare($sql);            
@@ -154,7 +155,12 @@ class Model{
         catch (PDOException $ex) {
             die("Failed query : " . $ex->getMessage());
         }
-        return $result;
+        if($stmt){
+            $response = ['status'=>1, 'message'=>'OK, bien enregistré'];
+        }else{
+            $response = ['status'=>0, 'message'=>'Grrr...pas enregistré'];
+        }
+        echo json_encode($response);
     }
     // Fonction qui permet de donner le format en Jour Mois Année 
     static function dateJMA($date){
