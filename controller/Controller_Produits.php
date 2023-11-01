@@ -6,7 +6,7 @@ class Controller_Produits extends Controller
 
     public function Produits()
     {
-   
+
         $produit = new model_produit;
         $produits = $produit->all();
 
@@ -15,15 +15,41 @@ class Controller_Produits extends Controller
 
     public function AjoutProduit()
     {
-        $data = $_POST;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $data['image'] = $_FILES['image']['name'];
+
+            //$image = $_FILES['image'];
+        }
         // $data = json_decode('php://input');
         $produit = new model_produit;
         $produits = $produit->save($data);
-        if ($produits){
+
+       
+        $base = 'C:\Users\Bachibouzouk\Desktop\ecommerce-react\public\images\\';
+        $destination = $base . $_FILES['image']['name'];
+
+        if ($produits) {
             $reponse = ['status' => 1, 'message' => "ajout réussi"];
-        }else{
+        } else {
             $reponse = ['status' => 0, 'message' => "ajout raté"];
         }
-    }
+        if (is_writable($base)) {
+            // Le répertoire est accessible en écriture
+            $destination = $base . $_FILES['image']['name'];
 
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
+                // Le fichier a été déplacé avec succès
+                $quid =  'Téléchargement réussi';
+            } else {
+                // Erreur lors du déplacement du fichier
+                $quid = 'Erreur lors du téléchargement du fichier';
+            }
+        } else {
+            // Le répertoire n'est pas accessible en écriture
+            $quid =  "Le répertoire de destination n'est pas accessible en écriture";
+        }
+        echo $quid;
+    }
 }
