@@ -5,8 +5,9 @@ class Routeur{
     // Structure de l'application basée sur les tables de la base de données   
     private $request;
     private $routes = [
-        "produits"        => ['controller' => 'Controller_Produits', 'method' => 'Produits'],
-        "ajout-produit"        => ['controller' => 'Controller_Produits', 'method' => 'AjoutProduit'],
+        "produits" => ['controller' => 'Controller_Produits', 'method' => 'Produits'],
+        "ajout-produit"  => ['controller' => 'Controller_Produits', 'method' => 'AjoutProduit'],
+        "details"  => ['controller' => 'Controller_Produits', 'method' => 'Details'],  
     ];
     // Cette fonction interragit avec l'index.php pour récupérer tout ce qu'on écrit dans la barre de navigation en localhost
     public function __construct($request){

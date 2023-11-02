@@ -20,9 +20,8 @@ class Controller_Produits extends Controller
             $data = $_POST;
             $data['image'] = $_FILES['image']['name'];
 
-            //$image = $_FILES['image'];
         }
-        // $data = json_decode('php://input');
+     
         $produit = new model_produit;
         $produits = $produit->save($data);
 
@@ -52,4 +51,7 @@ class Controller_Produits extends Controller
         }
         echo $quid;
     }
+    
+
+
 }
