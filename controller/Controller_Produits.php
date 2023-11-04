@@ -52,6 +52,14 @@ class Controller_Produits extends Controller
         echo $quid;
     }
     
+    public function Detail()
+    {
+        $id = $_POST;
+        $details  = new model_produit;
+        $details = $details->find($id);
+        echo json_encode($details);
+
+    }
 
 
 }

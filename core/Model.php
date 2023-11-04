@@ -22,17 +22,19 @@ class Model{
     // Permet de rechercher tous les enregistrements d'une table qui répondent à des conditions ou pas
     //$req(request),$cond(condition) ,$k(key), $v(value) , $pre(preparation)
     public function find($req = null){
+
+        //var_dump($req); die;
         $sql = 'SELECT * FROM ' . $this->table . ' ';
-        
-        if (isset($req)){
+
+        if (isset($req)) {
             $sql .= 'WHERE ';
             if (!is_array($req)) {
                 $sql .= $req;
             } else {
                 $cond = array();
-                foreach ($req as $k => $v) {                
+                foreach ($req as $k => $v) {
                     if (substr_count($v, '<>') > 0) {
-                        $v = str_replace('<>', '', $v);                     
+                        $v = str_replace('<>', '', $v);
                         $cond[] = "$k<>$v";
                     } else {
                         if (!is_numeric($v)) {
@@ -42,16 +44,16 @@ class Model{
                     }
                 };
                 $sql .= implode(' AND ', $cond);
-                if ($this->table == "actualites") {
-                    $sql .= " ORDER BY modified_date DESC"; // Remplacez 'date_column_name' par le nom de votre colonne de date
-                }
-                
             }
         }
 
         $pre = $this->bdd->prepare($sql);
         $pre->execute();
-        return $pre->fetchAll(PDO::FETCH_OBJ);
+        if ($req != null) {
+            return $pre->fetch(PDO::FETCH_OBJ);
+        } else {
+            return $pre->fetchAll(PDO::FETCH_OBJ);
+        }
     }
     
     public function find_in()
