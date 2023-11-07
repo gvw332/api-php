@@ -8,6 +8,7 @@ class Routeur{
         "produits" => ['controller' => 'Controller_Produits', 'method' => 'Produits'],
         "ajout-produit"  => ['controller' => 'Controller_Produits', 'method' => 'AjoutProduit'],
         "detail"  => ['controller' => 'Controller_Produits', 'method' => 'Detail'],  
+        "login"  => ['controller' => 'Controller_Connexion', 'method' => 'connexion_ctrl'],  
      
     ];
     // Cette fonction interragit avec l'index.php pour récupérer tout ce qu'on écrit dans la barre de navigation en localhost

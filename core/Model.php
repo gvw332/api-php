@@ -50,7 +50,7 @@ class Model{
         $pre = $this->bdd->prepare($sql);
         $pre->execute();
         if ($req != null) {
-            return $pre->fetch(PDO::FETCH_OBJ);
+            return $pre->fetch(PDO::FETCH_ASSOC);
         } else {
             return $pre->fetchAll(PDO::FETCH_OBJ);
         }
