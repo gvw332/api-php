@@ -21,8 +21,11 @@ class Validation{
             if (array_key_exists($key, $this->data)) {
                 if (empty($this->data[$key])) {
                     $this->errors .= "Le champ [$champ] est vide<br>";
+                   
                 }
             }
+            
+            
         }
         return $this; // Permet d'enchaîner les méthodes
     }
@@ -38,10 +41,12 @@ class Validation{
             if (array_key_exists($key, $this->data)) {
                 if (strpos($this->errors, $champ) === false) {
                     if (!filter_var($this->data[$key], FILTER_VALIDATE_EMAIL)) {
-                        $this->errors .= "Le champ [$champ] n'est pas valide<br>";
+                        $this->errors .= "Le champ [$champ] n'est pas valide<br> ";
                     }
                 }
+               
             }
+           
         }
 
         return $this; // Permet d'enchaîner les méthodes
