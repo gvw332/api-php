@@ -57,7 +57,12 @@ class Controller_Produits extends Controller
         $id = $_POST;
         $details  = new model_produit;
         $details = $details->find($id);
-        echo json_encode($details);
+        if (empty($details)) {
+            echo json_encode('N\'existe pas');
+        }else{
+            echo json_encode($details);
+        }
+       
 
     }
 

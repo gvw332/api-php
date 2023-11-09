@@ -14,7 +14,7 @@ class Controller_Connexion extends Controller
     {
         $validation = new Validation($data);
         $validation->cleaning()
-            ->required('mail/email', 'mdp/mot de passe');
+            ->required('mail/email', 'mdp');
         $errors = $validation->getErrors();
         $data = $validation->getData();
     

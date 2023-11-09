@@ -170,8 +170,8 @@ class Controller_Utilisateur extends Controller
         $validation = new Validation($data);
 
         $validation->cleaning()
-            ->required('pseudo', 'nom', 'prenom', 'mail/email', 'mdp/mot de passe', 'mdpbis/confirmation mot de passe')
-            ->email('mail/email');
+            ->required('pseudo/Pseudo', 'nom/Nom', 'prenom/Prénom', 'mail/Email', 'mdp/Mdp', 'mdpbis/Confirmation mdp')
+            ->email('mail/Email');
         $errors = $validation->getErrors();
         $data = $validation->getData();
         if ($errors) {
