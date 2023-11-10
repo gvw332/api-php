@@ -35,6 +35,7 @@ class MyAutoload{
         } else if (file_exists(CONTROLLER . $class . '.php')) {
             include_once(CONTROLLER . $class . '.php');
         } 
+
     }
 }
 

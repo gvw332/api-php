@@ -2,6 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Method: *");
+
 // Récupère l'url transformée et crée une request exécuter le routeur
 include_once('../core/config.php');
 
