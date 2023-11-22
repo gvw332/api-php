@@ -244,7 +244,12 @@ class Controller_Utilisateur extends Controller
             // }
            
         }
-        echo json_encode($msg);
+       if (!empty($msg)){
+        echo json_encode(['status'=>0, 'message'=>$msg]);
+       }
+    
+        
+        // echo json_encode($msg);
     }
     // Supprimer compte utilisateur
     public function delete_account()

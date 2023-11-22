@@ -47,13 +47,13 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
-    define('DB_NAME', 'ecommerce');
+    define('DB_NAME', 'ecommerce-react');
 } else {
     // sur le site
-    define('DB_HOST', '');
-    define('DB_USER', '');
-    define('DB_PASS', '');
-    define('DB_NAME', '');
+    define('DB_HOST', 'localhost:3306');
+    define('DB_USER', 'gvw3322');
+    define('DB_PASS', 'Bdd003322*/');
+    define('DB_NAME', 'ecommerce-react');
 }
 
 

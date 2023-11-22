@@ -25,8 +25,9 @@ class Controller_Produits extends Controller
         $produit = new model_produit;
         $produits = $produit->save($data);
 
-       
-        $base = 'C:\Users\Bachibouzouk\Desktop\ecommerce-react\public\images\\';
+        
+        $base = 'C:\xampp\htdocs\ecommerce-react\public\images\\';
+        // $base = '\public\images\\';
         $destination = $base . $_FILES['image']['name'];
 
         if ($produits) {
