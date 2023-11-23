@@ -25,10 +25,9 @@ class Controller_Produits extends Controller
         $produit = new model_produit;
         $produits = $produit->save($data);
 
-        
-        $base = 'C:\xampp\htdocs\ecommerce-react\public\images\\';
-        // $base = '\public\images\\';
-        $destination = $base . $_FILES['image']['name'];
+        $base = __DIR__ . '/../public/images/'; // Chemin relatif au dossier images
+        $destination = $base . basename($_FILES['image']['name']); // Sécurise le nom du fichier
+
 
         if ($produits) {
             $reponse = ['status' => 1, 'message' => "ajout réussi"];
@@ -37,7 +36,7 @@ class Controller_Produits extends Controller
         }
         if (is_writable($base)) {
             // Le répertoire est accessible en écriture
-            $destination = $base . $_FILES['image']['name'];
+       
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
                 // Le fichier a été déplacé avec succès
