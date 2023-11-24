@@ -31,7 +31,8 @@ class Controller_Stripe extends Controller
 
             $jsonObj = json_decode($jsonStr);
             //$panier = $jsonObj->panier;
-
+            // var_dump($jsonObj);
+            // die;
             // Create a PaymentIntent with amount and currency
             $paymentIntent = $stripe->paymentIntents->create([
                 'amount' => calculateOrderAmount($jsonObj->items),
