@@ -11,6 +11,7 @@ class Routeur{
         "login"  => ['controller' => 'Controller_Connexion', 'method' => 'connexion_ctrl'],  
         "inscription"  => ['controller' => 'Controller_Utilisateur', 'method' => 'inscription_ctrl'],
         "paiement"  => ['controller' => 'Controller_Stripe', 'method' => 'paiement'],
+        "delete"  => ['controller' => 'Controller_Produits', 'method' => 'delete'],
      
     ];
     // Cette fonction interragit avec l'index.php pour récupérer tout ce qu'on écrit dans la barre de navigation en localhost

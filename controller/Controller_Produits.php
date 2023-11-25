@@ -24,17 +24,13 @@ class Controller_Produits extends Controller
         }
      
         $produit = new model_produit;
-        $produits = $produit->save($data);
+        $result = $produit->save($data);
 
         $base = __DIR__ . '/../public/images/'; // Chemin relatif au dossier images
         $destination = $base . basename($_FILES['image']['name']); // Sécurise le nom du fichier
 
+        $image_sauvegardee = true;
 
-        if ($produits) {
-            $reponse = ['status' => 1, 'message' => "ajout réussi"];
-        } else {
-            $reponse = ['status' => 0, 'message' => "ajout raté"];
-        }
         if (is_writable($base)) {
             // Le répertoire est accessible en écriture
        
@@ -45,12 +41,19 @@ class Controller_Produits extends Controller
             } else {
                 // Erreur lors du déplacement du fichier
                 $quid = 'Erreur lors du téléchargement du fichier';
+                $image_sauvegardee = false;
             }
         } else {
             // Le répertoire n'est pas accessible en écriture
             $quid =  "Le répertoire de destination n'est pas accessible en écriture";
+            $image_sauvegardee = false;
         }
-        echo $quid;
+        if($image_sauvegardee){
+            echo json_encode($result);
+        }else{
+            echo json_encode($quid);
+        }
+        die;
     }
     
     public function Detail()
@@ -67,5 +70,13 @@ class Controller_Produits extends Controller
         die;
     }
 
+    public function Delete($id)
+    {
+        $id = $_POST['id'];
+        $produit = new model_produit;
+        $produits = $produit->delete($id);
 
+       
+        die;
+    }
 }

@@ -100,8 +100,18 @@ class Model{
         }
         // Si erreur alors on arrete le script et affiche le message
         catch (PDOException $ex) {
+            $response = ['status'=>0, 'message'=>'Grrr...pas supprimé'];
+            echo json_encode($response);
+            die;
             die("Failed query : " . $ex->getMessage());
         }
+        if($stmt){
+            $response = ['status'=>1, 'message'=>'OK, bien supprimé'];
+        }else{
+            $response = ['status'=>0, 'message'=>'Grrr...pas supprimé'];
+        }
+        echo json_encode($response);
+        die;
     }
     // Cette fonction analyse les datas reçues en paramètres et crée ou met à jour les données dans la table
     public function save($data){
@@ -155,14 +165,17 @@ class Model{
         }
         
         catch (PDOException $ex) {
+            $response = ['status'=>0, 'message'=>'Titre déjà existant'];
+            echo json_encode($response);
+            die;
             die("Failed query : " . $ex->getMessage());
         }
-        if($stmt){
+        if($result){
             $response = ['status'=>1, 'message'=>'OK, bien enregistré'];
         }else{
             $response = ['status'=>0, 'message'=>'Grrr...pas enregistré'];
         }
-        echo json_encode($response);
+        return $response;
     }
     // Fonction qui permet de donner le format en Jour Mois Année 
     static function dateJMA($date){
