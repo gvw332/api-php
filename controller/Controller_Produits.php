@@ -11,6 +11,7 @@ class Controller_Produits extends Controller
         $produits = $produit->all();
 
         echo json_encode($produits);
+        die;
     }
 
     public function AjoutProduit()
@@ -63,7 +64,7 @@ class Controller_Produits extends Controller
             echo json_encode($details);
         }
        
-
+        die;
     }
 
 

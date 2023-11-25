@@ -52,9 +52,9 @@ class Routeur{
 
             $currentController = new $controller;
             $currentController->$method($params);
-        } else {
-            $myView = new View('404');
-            $myView->render();
-        }
+         }else{
+			echo json_encode('route existe pas');
+ 		}
+		die;
     }
 }

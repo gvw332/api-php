@@ -19,8 +19,7 @@ class MyAutoload{
         }
 
 
-        define('CONTROLLER', ROOT . 'controller/');
-        define('VIEW', ROOT . 'view/');
+        define('CONTROLLER', ROOT . 'controller/');        
         define('MODEL', ROOT . 'model/');
         define('CLASSES', ROOT . 'core/');
 

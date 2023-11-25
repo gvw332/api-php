@@ -8,6 +8,7 @@ class Controller_Connexion extends Controller
         $myView = new View('connexion');
         $titre['titre'] = 'Connexion';
         $myView->render($titre);
+        
     }
     // Vérifie les données du formulaire qui se trouve dans la page de connexion
     public function connexion_ctrl($data)
@@ -43,8 +44,8 @@ class Controller_Connexion extends Controller
                 $response_data['message'] = "Mot de passe incorrect";
             }
         }
-        // var_dump($response_data);
-        // die;
+
         echo json_encode($response_data);
+        die;
     }
 }
